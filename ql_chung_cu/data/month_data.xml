@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record model="apartment.month" id="month_1">
+            <field name="name">01/2015</field>
+            <field name="year">2015</field>
+            <field name="date_start">01/01/2015</field>
+            <field name="date_end">01/31/2015</field>
+        </record>
+        <record model="apartment.month" id="month_2">
+            <field name="name">02/2015</field>
+            <field name="year">2015</field>
+            <field name="date_start">02/01/2015</field>
+            <field name="date_end">02/28/2015</field>
+        </record>
+        <record model="apartment.month" id="month_3">
+            <field name="name">03/2015</field>
+            <field name="year">2015</field>
+            <field name="date_start">03/01/2015</field>
+            <field name="date_end">03/31/2015</field>
+        </record>
+        <record model="apartment.month" id="month_4">
+            <field name="name">04/2015</field>
+            <field name="year">2015</field>
+            <field name="date_start">04/01/2015</field>
+            <field name="date_end">04/30/2015</field>
+        </record>
+         <record model="apartment.month" id="month_5">
+            <field name="name">05/2015</field>
+            <field name="year">2015</field>
+            <field name="date_start">05/01/2015</field>
+            <field name="date_end">05/31/2015</field>
+        </record>
+         <record model="apartment.month" id="month_6">
+            <field name="name">06/2015</field>
+            <field name="year">2015</field>
+            <field name="date_start">06/01/2015</field>
+            <field name="date_end">06/30/2015</field>
+        </record>
+         <record model="apartment.month" id="month_7">
+            <field name="name">07/2015</field>
+            <field name="year">2015</field>
+            <field name="date_start">07/01/2015</field>
+            <field name="date_end">07/31/2015</field>
+        </record>
+        <record model="apartment.month" id="month_8">
+            <field name="name">08/2015</field>
+            <field name="year">2015</field>
+            <field name="date_start">08/01/2015</field>
+            <field name="date_end">08/31/2015</field>
+        </record>
+         <record model="apartment.month" id="month_9">
+            <field name="name">09/2015</field>
+            <field name="year">2015</field>
+            <field name="date_start">09/01/2015</field>
+            <field name="date_end">09/30/2015</field>
+        </record>
+         <record model="apartment.month" id="month_10">
+            <field name="name">10/2015</field>
+            <field name="year">2015</field>
+            <field name="date_start">10/01/2015</field>
+            <field name="date_end">10/31/2015</field>
+        </record>
+        <record model="apartment.month" id="month_11">
+            <field name="name">11/2015</field>
+            <field name="year">2015</field>
+            <field name="date_start">11/01/2015</field>
+            <field name="date_end">01/30/2015</field>
+        </record>
+        <record model="apartment.month" id="month_12">
+            <field name="name">12/2015</field>
+            <field name="year">2015</field>
+            <field name="date_start">12/01/2015</field>
+            <field name="date_end">12/31/2015</field>
+        </record>
+    </data>
+</openerp>

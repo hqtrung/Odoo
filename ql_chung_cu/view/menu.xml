@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <menuitem id="menu_chungcu_root"
+                  name="Quản lý chung cư"
+                  sequence="10"
+                />
+        <menuitem id="menu_chungcu_operation"
+                  name="Quản lý chung cư"
+                  parent="menu_chungcu_root"
+                />
+        <menuitem id="menu_chungcu_conf"
+                  name="Cấu hình"
+                  parent="menu_chungcu_root"
+                />
+        <menuitem id="menu_chungcu_conf_etc"
+                  name="Cấu hình khác"
+                  parent="menu_chungcu_root"
+                />
+    </data>
+</openerp>

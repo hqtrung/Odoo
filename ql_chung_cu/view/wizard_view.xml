@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_paid_contract" model="ir.ui.view">
+            <field name="name">Tổng tiền thanh toán</field>
+            <field name="model">paid.contract</field>
+            <field name="arch" type="xml">
+             <form string="Tổng tiền thanh toán">
+                <header>
+                    <button name="load_info" type="object" string="Tải thông tin" class="oe_highlight" attrs="{'invisible':[('is_load', '!=', False)]}"/>
+                    <button name="create_so" string="Thanh toán" type="object" class="oe_highlight" attrs="{'invisible':['|',('is_load', '!=', True),('is_sale', '!=', False)]}"/>
+                </header>
+                <sheet>
+                     <group>
+                        <field name="room_id"/>
+                        <field name="supplier_id"/>
+                        <field name="month"/>
+                        <field name="is_load" invisible="1"/>
+                        <field name="is_sale" invisible="1"/>
+                     </group>
+                    <notebook position="inside">
+                        <page string="Điện nước">
+                               <field name="month_line">
+                                   <tree>
+                                        <field name="date"/>
+                                        <field name="old_power"/>
+                                        <field name="old_water"/>
+                                        <field name="power_number"/>
+                                        <field name="water_number"/>
+                                        <field name="power_price"/>
+                                        <field name="water_price"/>
+                                   </tree>
+                               </field>
+                        </page>
+                        <page string="Dịch vụ">
+                               <field name="service_line">
+                                   <tree>
+                                    <field name="date"/>
+                                    <field name="service_type"/>
+                                    <field name="price"/>
+                                    <field name="description"/>
+                                   </tree>
+                               </field>
+                        </page>
+                    </notebook>
+
+                    <group class="oe_subtotal_footer oe_right" colspan="2" name="sale_total">
+                        <field name="power_amount" widget="monetary"/>
+                        <field name="water_amount" widget="monetary"/>
+                        <field name="service_amount" widget="monetary"/>
+                        <field name="room_price" widget="monetary"/>
+                        <div class="oe_subtotal_footer_separator oe_inline">
+                            <label for="amount_total"/>
+                             <button name="button_dummy" string="(update)" type="object" class="oe_edit_only oe_link"/>
+                        </div>
+                        <field name="amount_total" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary"/>
+                    </group>
+                </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="wizard_paid_contract" model="ir.actions.act_window">
+            <field name="name">Thanh toán</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">paid.contract</field>
+            <field name="view_id" ref="view_paid_contract"/>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+        <record model="ir.ui.view" id="view_paid">
+            <field name="name">apartment.contract.paid</field>
+            <field name="model">apartment.contract</field>
+            <field name="inherit_id" ref="view_apartment_contract" />
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='action_confirm']" position="before">
+                    <button name="create_field" string="Thanh toán" type="object" class="oe_highlight" />
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>

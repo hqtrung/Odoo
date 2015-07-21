@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record model="product.product" id="price_room">
+            <field name="name">Tiền thuê nhà</field>
+            <field name="sale_ok">True</field>
+            <field name="type">consu</field>
+            <field name="active">True</field>
+            <field name="list_price">0</field>
+            <field name="description">Created automatically by odoo_chung_cu</field>
+        </record>
+
+        <record model="product.product" id="price_power">
+            <field name="name">Tiền điện</field>
+            <field name="sale_ok">True</field>
+            <field name="type">consu</field>
+            <field name="active">True</field>
+            <field name="list_price">0</field>
+            <field name="description">Created automatically by odoo_chung_cu</field>
+        </record>
+
+        <record model="product.product" id="price_water">
+            <field name="name">Tiền nước</field>
+            <field name="sale_ok">True</field>
+            <field name="type">consu</field>
+            <field name="active">True</field>
+            <field name="list_price">0</field>
+            <field name="description">Created automatically by odoo_chung_cu</field>
+        </record>
+
+         <record model="product.product" id="price_service">
+            <field name="name">Tiền dịch vụ</field>
+            <field name="sale_ok">True</field>
+            <field name="type">consu</field>
+            <field name="active">True</field>
+            <field name="list_price">0</field>
+            <field name="description">Created automatically by odoo_chung_cu</field>
+        </record>
+    </data>
+</openerp>

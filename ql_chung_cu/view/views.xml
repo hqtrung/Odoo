@@ -1,0 +1,470 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_apartment_building" model="ir.ui.view">
+            <field name="name">Quản lý tòa nhà</field>
+            <field name="model">apartment.building</field>
+            <field name="arch" type="xml">
+                <form string="Quản lý tòa nhà">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_apartment_building_tree">
+            <field name="name">apartment.building.tree</field>
+            <field name="model">apartment.building</field>
+            <field name="arch" type="xml">
+                <tree string="Quản lý tòa nhà">
+                    <field name="name" string="Tên tòa nhà"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_apartment_building_form">
+            <field name="name">Quản lý tòa nhà</field>
+            <field name="res_model">apartment.building</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">list,form</field>
+            <field name="view_id" ref="view_apartment_building_tree" />
+        </record>
+
+
+        <menuitem id="menu_apartment_building"
+                  name="Quản lý tòa nhà"
+                  parent="menu_chungcu_conf"
+                  action="action_apartment_building_form"
+                />
+        <!-- Quản lý căn hộ-->
+        <record id="view_apartment_room" model="ir.ui.view">
+            <field name="name">Quản lý Căn hộ</field>
+            <field name="model">apartment.room</field>
+            <field name="arch" type="xml">
+                <form string="Quản lý căn hộ">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="building_id" widget="selection"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_apartment_room_tree">
+            <field name="name">apartment.room.tree</field>
+            <field name="model">apartment.room</field>
+            <field name="arch" type="xml">
+                <tree string="Quản lý căn hộ">
+                    <field name="name" string="Tên tòa nhà"/>
+                    <field name="building_id" string="Tòa nhà"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_apartment_room_form">
+            <field name="name">Quản lý căn hộ</field>
+            <field name="res_model">apartment.room</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">list,form</field>
+            <field name="view_id" ref="view_apartment_room_tree" />
+        </record>
+
+
+        <menuitem id="menu_apartment_room"
+                  sequence="2"
+                  name="Quản lý căn hộ"
+                  parent="menu_chungcu_conf"
+                  action="action_apartment_room_form"
+                />
+        <!-- Quản lý hợp đồng-->
+
+        <record id="view_apartment_contract" model="ir.ui.view">
+            <field name="name">Quản lý hợp đồng</field>
+            <field name="model">apartment.contract</field>
+            <field name="arch" type="xml">
+                <form string="Vehicle">
+                    <header>
+                        <button name="action_confirm" states="draft" type="object" string="Xác nhận" class="oe_highlight"/>
+                        <button name="action_cancel" string="Hủy" type="object" states="confirm"/>
+                        <field name="state"  widget="statusbar" statusbar_visible="draft,confirm,cancel"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="supplier_id" domain="[('customer', '=', True)]"/>
+                                <field name="price"/>
+                                <field name="deposit" />
+                                <field name="power_start"/>
+                            </group>
+                            <group>
+                                <field name="room_id"/>
+                                <field name="date_created"/>
+                                <field name="date_start" />
+                                <field name="date_end" />
+                                <field name="water_start"/>
+                            </group>
+                        </group>
+                        <notebook position="inside">
+                            <page string="Sale Order">
+                                <field name="sale_id"/>
+                            </page>
+                            <page string="Tenant">
+                                <field name="tenent_id"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_apartment_contract_tree">
+            <field name="name">apartment.contract.tree</field>
+            <field name="model">apartment.contract</field>
+            <field name="arch" type="xml">
+                <tree string="Quản lý hợp đồng">
+                    <field name="name"/>
+                    <field name="room_id"/>
+                    <field name="price"/>
+                    <field name="date_start" />
+                    <field name="date_end" />
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_apartment_contract_form">
+            <field name="name">Quản lý hợp đồng</field>
+            <field name="res_model">apartment.contract</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">list,form</field>
+            <field name="view_id" ref="view_apartment_room_tree" />
+        </record>
+
+
+        <menuitem id="menu_apartment_contract"
+                  name="Quản lý hợp đồng"
+                  sequence="1"
+                  parent="menu_chungcu_conf"
+                  action="action_apartment_contract_form"
+                />
+        <!-- Tháng-->
+
+        <record id="view_apartment_month" model="ir.ui.view">
+            <field name="name">Tháng hóa đơn</field>
+            <field name="model">apartment.month</field>
+            <field name="arch" type="xml">
+                <form string="Tháng hóa đơn">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="year" widget="selection"/>
+                                <label for="date_start" string="Duration"/>
+                                <div>
+                                    <field name="date_start" class="oe_inline" nolabel="1"/> -
+                                    <field name="date_end" nolabel="1" class="oe_inline"/>
+                                </div>
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_apartment_month_tree">
+            <field name="name">apartment.month.tree</field>
+            <field name="model">apartment.month</field>
+            <field name="arch" type="xml">
+                <tree string="Tháng hóa đơn">
+                    <field name="name"/>
+                    <field name="year"/>
+                    <field name="date_start"/>
+                    <field name="date_end"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_apartment_month_form">
+            <field name="name">Tháng hóa đơn</field>
+            <field name="res_model">apartment.month</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">list,form</field>
+            <field name="view_id" ref="view_apartment_month_tree" />
+        </record>
+
+        <menuitem id="menu_apartment_month"
+                  name="Tháng hóa đơn"
+                  parent="menu_chungcu_conf_etc"
+                  action="action_apartment_month_form"
+                />
+
+        <!-- Điện nước hàng tháng-->
+        <record id="view_apartment_month_index" model="ir.ui.view">
+            <field name="name">Nhập chỉ số điện nước</field>
+            <field name="model">apartment.month.index</field>
+            <field name="arch" type="xml">
+                <form string="Chỉ số điện nước">
+                    <header>
+                        <button name="action_confirm" states="draft" type="object" string="Xác nhận" class="oe_highlight"/>
+                        <button name="action_cancel" string="Hủy" type="object" states="confirm"/>
+                        <button name="not_paid" string="Không thanh toán" type="object" states="confirm"/>
+                        <field name="state"  widget="statusbar" statusbar_visible="draft,confirm,paid,not_paid,cancel"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only"/>
+                            <group>
+                                <group>
+                                    <field name="date"/>
+                                </group>
+                                <group>
+                                    <field name="room_id" widget="selection"/>
+                                </group>
+                            </group>
+                        </div>
+                        <group col="4" string="General Properties">
+                            <group>
+                                <field name="old_power"/>
+                                <field name="old_water"/>
+                            </group>
+                            <group >
+                                <field name="power_number"/>
+                                <field name="water_number"/>
+                            </group>
+                            <field name="power_price" invisible="1"/>
+                            <field name="water_price" invisible="1"/>
+
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_apartment_month_index_tree">
+            <field name="name">apartment.month.tree</field>
+            <field name="model">apartment.month.index</field>
+            <field name="arch" type="xml">
+                <tree string="Chỉ số điện nước" colors="grey:state=='cancel';blue:state in ('draft')">
+                    <field name="room_id"/>
+                    <field name="date"/>
+                    <field name="power_number"/>
+                    <field name="water_number"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_apartment_month_index_form">
+            <field name="name">Nhập chỉ số điện nước</field>
+            <field name="res_model">apartment.month.index</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">list,form</field>
+            <field name="view_id" ref="view_apartment_month_tree" />
+        </record>
+
+        <menuitem id="menu_apartment_month_index"
+                  name="Nhập chỉ số điện nước"
+                  parent="menu_chungcu_operation"
+                  action="action_apartment_month_index_form"
+                />
+        <!-- Khach hang-->
+        <record model="ir.actions.act_window" id="action_partner">
+            <field name="name">Khách hàng</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="context">{"search_default_customer":1}</field>
+            <field name="view_id" ref="base.res_partner_kanban_view" />
+        </record>
+
+        <menuitem id="menu_res_partner"
+                  sequence="1"
+                  name="Khách hàng"
+                  parent="menu_chungcu_operation"
+                  action="action_partner"
+                />
+        <!-- giá điện nước-->
+
+        <record id="view_apartment_price" model="ir.ui.view">
+            <field name="name">Đơn giá điện nước</field>
+            <field name="model">apartment.price</field>
+            <field name="arch" type="xml">
+                <form string="Đơn giá điện nước">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="power_price"/>
+                                <field name="water_price"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_apartment_price_tree">
+            <field name="name">apartment.price.tree</field>
+            <field name="model">apartment.price</field>
+            <field name="arch" type="xml">
+                <tree string="Đơn giá điện nước">
+                    <field name="power_price"/>
+                    <field name="water_price"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_apartment_price_form">
+            <field name="name">Đơn giá điện nước</field>
+            <field name="res_model">apartment.price</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">list,form</field>
+            <field name="view_id" ref="view_apartment_price_tree" />
+        </record>
+
+        <menuitem id="menu_apartment_price"
+                  name="Đơn giá điện nước"
+                  parent="menu_chungcu_conf_etc"
+                  action="action_apartment_price_form"
+                />
+        <!-- Các loại dịch vụ-->
+        <record id="view_apartment_service_conf" model="ir.ui.view">
+            <field name="name">Loại dịch vụ</field>
+            <field name="model">apartment.service.conf</field>
+            <field name="arch" type="xml">
+                <form string="Loại dịch vụ">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_apartment_service_conf_tree">
+            <field name="name">apartment.service.conf.tree</field>
+            <field name="model">apartment.service.conf</field>
+            <field name="arch" type="xml">
+                <tree string="Loại dịch vụ">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_apartment_service_conf_form">
+            <field name="name">Loại dịch vụ</field>
+            <field name="res_model">apartment.service.conf</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">list,form</field>
+            <field name="view_id" ref="view_apartment_service_conf_tree" />
+        </record>
+
+        <menuitem id="menu_apartment_service_conf"
+                  name="Loại dịch vụ"
+                  parent="menu_chungcu_conf_etc"
+                  action="action_apartment_service_conf_form"
+                />
+        <!-- Nhập dịch vụ cho phòng-->
+        <record id="view_apartment_service" model="ir.ui.view">
+            <field name="name">Dịch vụ khác</field>
+            <field name="model">apartment.service</field>
+            <field name="arch" type="xml">
+                <form string="Dịch vụ">
+                    <header>
+                        <button name="action_confirm" states="draft" type="object" string="Xác nhận" class="oe_highlight"/>
+                        <button name="action_cancel" string="Hủy" type="object" states="confirm"/>
+                        <field name="state"  widget="statusbar" statusbar_visible="draft,confirm,cancel"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only"/>
+                            <group>
+                                <group>
+                                    <field name="room_id" widget="selection"/>
+                                    <field name="date"/>
+                                </group>
+                                <group>
+                                    <field name="service_type"/>
+                                    <field name="price"/>
+                                </group>
+                            </group>
+                            <group>
+                                <field name="description" class="oe_inline"/>
+                            </group>
+                        </div>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_apartment_service_tree">
+            <field name="name">apartment.service.tree</field>
+            <field name="model">apartment.service</field>
+            <field name="arch" type="xml">
+                <tree string="Dịch vụ">
+                    <field name="room_id"/>
+                    <field name="date"/>
+                    <field name="service_type"/>
+                    <field name="price"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_apartment_service_form">
+            <field name="name">Dịch vụ</field>
+            <field name="res_model">apartment.service</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">list,form</field>
+            <field name="view_id" ref="view_apartment_service_tree" />
+        </record>
+
+        <menuitem id="menu_apartment_service"
+                  name="Dịch vụ"
+                  parent="menu_chungcu_operation"
+                  action="action_apartment_service_form"
+                />
+    </data>
+</openerp>

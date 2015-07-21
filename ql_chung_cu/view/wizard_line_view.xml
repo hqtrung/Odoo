@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_paid_month_index" model="ir.ui.view">
+            <field name="name">Nhập chỉ số điện nước</field>
+            <field name="model">paid.contract.line.month</field>
+            <field name="arch" type="xml">
+                <form string="Chỉ số điện nước">
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only"/>
+                            <group>
+                                <group>
+                                    <field name="date"/>
+                                </group>
+                                <group>
+                                    <field name="room_id" widget="selection"/>
+                                </group>
+                            </group>
+                        </div>
+                        <group col="4" string="General Properties">
+                            <group>
+                                <field name="old_power"/>
+                                <field name="old_water"/>
+                            </group>
+                            <group >
+                                <field name="power_number"/>
+                                <field name="water_number"/>
+                            </group>
+                            <field name="power_price" invisible="1"/>
+                            <field name="water_price" invisible="1"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_paid_month_index_tree">
+            <field name="name">paid.contract.line.month.tree</field>
+            <field name="model">paid.contract.line.month</field>
+            <field name="arch" type="xml">
+                <tree string="Chỉ số điện nước">
+                    <field name="room_id"/>
+                    <field name="date"/>
+                    <field name="power_number"/>
+                    <field name="water_number"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_paid_month_index_form">
+            <field name="name">Nhập chỉ số điện nước</field>
+            <field name="res_model">paid.contract.line.month</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">list,form</field>
+            <field name="view_id" ref="view_paid_month_index_tree" />
+        </record>
+    </data>
+</openerp>
